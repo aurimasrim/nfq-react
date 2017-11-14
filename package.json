@@ -1,0 +1,21 @@
+{
+  "name": "react-academy",
+  "version": "1.0.0",
+  "description": "React boiletplate for NFQ Academy",
+  "main": "src/index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/core": "^7.0.0-beta.32",
+    "@babel/preset-env": "^7.0.0-beta.32",
+    "@babel/preset-stage-0": "^7.0.0-beta.32",
+    "@babel/preset-stage-1": "^7.0.0-beta.32",
+    "babel-loader": "^8.0.0-beta.0",
+    "webpack": "^3.8.1",
+    "webpack-dev-server": "^2.9.4"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
