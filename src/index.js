@@ -55,7 +55,8 @@ import Movie from "./Movie";
 class MovieSearch extends React.Component {
     state = {
         movie: {},
-        searchInput: ''
+        searchInput: '',
+        loading: true
     };
     componentWillMount() {
         this.onRequest();
@@ -72,16 +73,17 @@ class MovieSearch extends React.Component {
 
     onRequest = (value = 'fast') => {
         // console.log(e.target.value);
-
+        this.setState({loading: true});
         fetch(`http://www.omdbapi.com/?t=${value}&apikey=969a0dc3`)
             .then(response => response.json())
-            .then(json => this.setState({movie: json}));
+            .then(json => this.setState({movie: json, loading: false}));
     };
 
     render()  {
         return (
             <div>
                 <h1>Movies</h1>
+                {this.state.loading ? <h4 >Loading...</h4> : null}
                 <Movie {...this.state.movie}/>
                 <input type="text" onChange={this.onUserInput} value={this.state.searchInput}/>
             </div>
