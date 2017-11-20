@@ -77,7 +77,7 @@ class MovieSearch extends React.Component {
 
     onRequest = (value = 'fast') => {
         this.setState({loading: true});
-        fetch(`http://www.omdbapi.com/?t=${value}&apikey=969a0dc3`)
+        fetch(`http://www.omdbapi.com/?t=${value}&apikey=fc935341`)
             .then(response => response.json())
             .then(json => this.setState({movie: json, loading: false}));
     };
