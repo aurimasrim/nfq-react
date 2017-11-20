@@ -63,8 +63,9 @@ class MovieSearch extends React.Component {
     }
 
     onUserInput = (e) => {
+        let previous = this.state.searchInput;
         let replaced = this.replaceNotLetters(e.target.value);
-        if (e.target.value === replaced)
+        if (previous !== replaced)
             this.onRequest(replaced);
     };
 
@@ -75,7 +76,6 @@ class MovieSearch extends React.Component {
     };
 
     onRequest = (value = 'fast') => {
-        // console.log(e.target.value);
         this.setState({loading: true});
         fetch(`http://www.omdbapi.com/?t=${value}&apikey=969a0dc3`)
             .then(response => response.json())
