@@ -63,12 +63,15 @@ class MovieSearch extends React.Component {
     }
 
     onUserInput = (e) => {
-        this.replaceNotLetters(e.target.value);
-        this.onRequest(e.target.value);
+        let replaced = this.replaceNotLetters(e.target.value);
+        if (e.target.value === replaced)
+            this.onRequest(replaced);
     };
 
     replaceNotLetters = (value) => {
-        this.setState({searchInput: value.replace(/[^A-Za-z]/g, '')} )
+        let replaced = value.replace(/[^A-Za-z]/g, '');
+        this.setState({searchInput: replaced });
+        return replaced;
     };
 
     onRequest = (value = 'fast') => {
