@@ -54,14 +54,20 @@ import Movie from "./Movie";
 
 class MovieSearch extends React.Component {
     state = {
-        movie: {}
+        movie: {},
+        searchInput: ''
     };
     componentWillMount() {
         this.onRequest();
     }
 
     onUserInput = (e) => {
-       this.onRequest(e.target.value);
+        this.replaceNotLetters(e.target.value);
+        this.onRequest(e.target.value);
+    };
+
+    replaceNotLetters = (value) => {
+        this.setState({searchInput: value.replace(/[^A-Za-z]/g, '')} )
     };
 
     onRequest = (value = 'fast') => {
@@ -77,7 +83,7 @@ class MovieSearch extends React.Component {
             <div>
                 <h1>Movies</h1>
                 <Movie {...this.state.movie}/>
-                <input type="text" onChange={this.onUserInput}/>
+                <input type="text" onChange={this.onUserInput} value={this.state.searchInput}/>
             </div>
         )
     }
