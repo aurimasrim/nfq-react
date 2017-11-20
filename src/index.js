@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Movie from "./Movie";
+import {DebounceInput} from 'react-debounce-input';
 
 
 // function sum(a, b) {
@@ -88,7 +89,7 @@ class MovieSearch extends React.Component {
                 <h1>Movies</h1>
                 {this.state.loading ? <h4 >Loading...</h4> : null}
                 <Movie {...this.state.movie}/>
-                <input type="text" onChange={this.onUserInput} value={this.state.searchInput}/>
+                    <DebounceInput debounceTimeout={150} type="text" onChange={this.onUserInput} value={this.state.searchInput}/>
             </div>
         )
     }
